@@ -1,0 +1,67 @@
+// Data proyek disimpan di objek global window agar dapat dimuat langsung lewat protokol file:// maupun GitHub Pages tanpa bundler.
+window.PORTFOLIO_PROJECTS = [
+  {
+    id: "proj-01",
+    index: "01",
+    isWide: true,
+    category: "web",
+    categoryLabel: "Aplikasi Web",
+    title: "[PROYEK 01: Nama Aplikasi Web Utama Anda]",
+    summary: "[PLACEHOLDER DATA ASLI: Jelaskan dalam 1-2 kalimat masalah nyata yang diselesaikan aplikasi ini dan siapa penggunanya. Ubah teks ini di file js/projects-data.js.]",
+    architectureNote: "[ARSITEKTUR: Contoh: Antarmuka dibangun dengan HTML semantik, state terpusat di JavaScript modular, dan penyimpanan lokal IndexedDB.]",
+    problemStatement: "[MASALAH TEKNIS: Tuliskan tantangan teknis spesifik yang Anda hadapi saat membangun proyek ini.]",
+    solutionDetail: "[SOLUSI & IMPLEMENTASI: Jelaskan bagaimana kode Anda menyelesaikan masalah tersebut secara terukur tanpa klaim berlebihan.]",
+    stack: ["HTML5", "CSS Grid", "Vanilla JS", "REST API"],
+    repoUrl: "https://github.com/fajri-khaerullah",
+    liveUrl: "#katalog",
+    statusLabel: "Template Siap Diedit"
+  },
+  {
+    id: "proj-02",
+    index: "02",
+    isWide: false,
+    category: "api",
+    categoryLabel: "Sistem & API",
+    title: "[PROYEK 02: Layanan Backend atau Integrasi API]",
+    summary: "[PLACEHOLDER DATA ASLI: Deskripsikan layanan backend, skema database, atau integrasi pihak ketiga yang Anda bangun.]",
+    architectureNote: "[ARSITEKTUR: Contoh: Validasi input berlapis, pembatasan laju permintaan, dan struktur respons JSON terstandar.]",
+    problemStatement: "[MASALAH TEKNIS: Jelaskan kebutuhan integrasi data atau kendala latensi yang ingin dipecahkan.]",
+    solutionDetail: "[SOLUSI & IMPLEMENTASI: Rincikan pendekatan kode, struktur endpoint, dan cara pengujian yang Anda terapkan.]",
+    stack: ["Node.js", "Express", "PostgreSQL", "Docker"],
+    repoUrl: "https://github.com/fajri-khaerullah",
+    liveUrl: "#katalog",
+    statusLabel: "Template Siap Diedit"
+  },
+  {
+    id: "proj-03",
+    index: "03",
+    isWide: false,
+    category: "cli",
+    categoryLabel: "Otomasi & CLI",
+    title: "[PROYEK 03: Skrip Otomasi atau Alat Command-Line]",
+    summary: "[PLACEHOLDER DATA ASLI: Jelaskan alur kerja manual yang berhasil Anda otomatisasi menggunakan skrip atau kakas CLI ini.]",
+    architectureNote: "[ARSITEKTUR: Contoh: Pemrosesan berkas secara streaming dengan penanganan kode keluar (exit code) standar POSIX.]",
+    problemStatement: "[MASALAH TEKNIS: Sebutkan proses berulang yang sebelumnya memakan waktu atau rawan kesalahan manusia.]",
+    solutionDetail: "[SOLUSI & IMPLEMENTASI: Uraikan argumen CLI, cara kerja parser, dan hasil eksekusi nyata di lingkungan lokal.]",
+    stack: ["Python", "Bash", "GitHub Actions"],
+    repoUrl: "https://github.com/fajri-khaerullah",
+    liveUrl: "#katalog",
+    statusLabel: "Template Siap Diedit"
+  },
+  {
+    id: "proj-04",
+    index: "04",
+    isWide: true,
+    category: "web",
+    categoryLabel: "Aplikasi Web",
+    title: "[PROYEK 04: Eksperimen Antarmuka atau Visualisasi Data]",
+    summary: "[PLACEHOLDER DATA ASLI: Tuliskan eksperimen komponen UI, kalkulator interaktif, atau visualisasi data yang pernah Anda kerjakan.]",
+    architectureNote: "[ARSITEKTUR: Contoh: Perhitungan tata letak responsif tiga tahap dengan dukungan navigasi keyboard penuh.]",
+    problemStatement: "[MASALAH TEKNIS: Jelaskan bagaimana data kompleks perlu disajikan agar tetap mudah dibaca di layar ponsel maupun desktop.]",
+    solutionDetail: "[SOLUSI & IMPLEMENTASI: Jelaskan struktur DOM, manajemen fokus aksesibilitas, dan optimasi render yang digunakan.]",
+    stack: ["JavaScript ES6+", "CSS Custom Properties", "WCAG AA"],
+    repoUrl: "https://github.com/fajri-khaerullah",
+    liveUrl: "#katalog",
+    statusLabel: "Template Siap Diedit"
+  }
+];

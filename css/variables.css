@@ -1,0 +1,89 @@
+:root {
+  /* Light mode palette verified above 6.5:1 for text and 4.6:1 for interactive borders */
+  --bg-canvas: #F5F5F7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-subtle: #EAEAEF;
+  --bg-header-glass: rgba(245, 245, 247, 0.88);
+
+  --text-primary: #1D1D1F;
+  --text-secondary: #515154;
+  --text-on-accent: #FFFFFF;
+
+  --accent-primary: #0055B3;
+  --accent-hover: #003E85;
+  --accent-subtle: #E5F0FF;
+
+  --border-subtle: #D2D2D7;
+  --border-strong: #6E6E73;
+
+  --status-error-bg: #FFF5F5;
+  --status-error-text: #B3261E;
+  --status-error-border: #B3261E;
+
+  --status-info-bg: #F0F6FF;
+  --status-info-text: #004494;
+  --status-info-border: #0055B3;
+
+  /* Elevation reserved only for modal dialog and open mobile menu drawer (R-12) */
+  --shadow-elevated: 0 20px 48px rgba(0, 0, 0, 0.18);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Fluid type scale that adapts smoothly across mobile, tablet, and desktop (R-03) */
+  --text-xs: clamp(0.78rem, 0.74rem + 0.15vw, 0.84rem);
+  --text-sm: clamp(0.88rem, 0.84rem + 0.18vw, 0.95rem);
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  --text-lg: clamp(1.15rem, 1.08rem + 0.35vw, 1.32rem);
+  --text-xl: clamp(1.4rem, 1.25rem + 0.7vw, 1.85rem);
+  --text-2xl: clamp(1.85rem, 1.5rem + 1.5vw, 2.75rem);
+  --text-display: clamp(2.2rem, 1.7rem + 2.4vw, 3.75rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* Distinct radii differentiate structural containers, inputs, and filter chips (R-11) */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --ease-out-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 180ms var(--ease-out-apple);
+  --transition-medium: 320ms var(--ease-out-apple);
+}
+
+[data-theme="dark"] {
+  /* Dark mode palette verified above 7.1:1 for text and 5.0:1 for interactive borders */
+  --bg-canvas: #000000;
+  --bg-surface: #141416;
+  --bg-surface-subtle: #1F1F24;
+  --bg-header-glass: rgba(12, 12, 14, 0.88);
+
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1A6;
+  --text-on-accent: #000000;
+
+  --accent-primary: #5CA8FF;
+  --accent-hover: #82BCFF;
+  --accent-subtle: #10243E;
+
+  --border-subtle: #2C2C30;
+  --border-strong: #86868B;
+
+  --status-error-bg: #291212;
+  --status-error-text: #FFB4AB;
+  --status-error-border: #FFB4AB;
+
+  --status-info-bg: #102136;
+  --status-info-text: #94C5FF;
+  --status-info-border: #5CA8FF;
+
+  --shadow-elevated: 0 24px 56px rgba(0, 0, 0, 0.72);
+}
