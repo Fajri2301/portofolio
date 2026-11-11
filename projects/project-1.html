@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Studi kasus pengembangan Sistem Informasi Desa, Portal Organisasi PMII, dan Web Platform oleh Fajri Khaerullah.">
+  <title>Sistem Informasi Desa &amp; Portal Web | Fajri Khaerullah</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B3BFF'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-size='15' font-weight='800'%3EFK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a href="../index.html" class="site-logo">FAJRI.</a>
+
+      <div class="header-center">
+        <button type="button" id="mode-toggle-btn" class="mode-toggle-pill" aria-pressed="false" aria-label="Change the Mode (Ganti tema gelap atau terang)">
+          <svg class="mode-toggle-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2.5 13.5L13.5 2.5M10.5 2.5H13.5V5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Change the Mode</span>
+        </button>
+      </div>
+
+      <button type="button" id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-controls="menu-overlay" aria-label="Buka menu navigasi">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="menu-overlay" class="menu-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu Navigasi Utama">
+    <div class="menu-overlay-top">
+      <span class="site-logo">FAJRI.</span>
+      <button type="button" id="menu-close-btn" class="menu-close-btn" aria-label="Tutup menu navigasi">
+        Close (Esc)
+      </button>
+    </div>
+
+    <nav class="menu-nav" aria-label="Tautan bagian halaman">
+      <ul class="menu-nav-list">
+        <li>
+          <a href="../index.html#hero" class="menu-nav-link">
+            <span class="display-bold">01</span>
+            <span class="serif-italic">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../index.html#about" class="menu-nav-link">
+            <span class="display-bold">02</span>
+            <span class="serif-italic">About &amp; Pillars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../index.html#skills" class="menu-nav-link">
+            <span class="display-bold">03</span>
+            <span class="serif-italic">Skills &amp; Stack</span>
+          </a>
+        </li>
+        <li>
+          <a href="../index.html#projects" class="menu-nav-link">
+            <span class="display-bold">04</span>
+            <span class="serif-italic">Selected projects</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="menu-overlay-footer">
+      <span>Fajri Khaerullah (Full-Stack Developer &amp; Creative Technologist)</span>
+      <span>GitHub: github.com/Fajri2301 | Instagram: @fajrikhaerullah23</span>
+    </div>
+  </div>
+
+  <main id="main-content" class="project-page-main">
+    <div class="container">
+      <div class="project-back-row">
+        <a href="../index.html#projects" class="btn-pill btn-pill--outline">Kembali ke Daftar Project</a>
+      </div>
+
+      <header class="project-hero">
+        <span class="project-badge">STUDI KASUS 01 / SOFTWARE ENGINEERING (LARAVEL 12-13, LIVEWIRE 3 &amp; MARIADB)</span>
+        <h1 class="project-page-title heading-mixed">
+          <span class="display-bold">SISUKA, SIDESA, INFORMIA</span>
+          <span class="serif-italic">&amp; enterprise web systems</span>
+        </h1>
+        <p class="project-page-summary">
+          <strong>Overview:</strong> Rangkaian sistem informasi pemerintahan desa, media berita, dan organisasi berbasis <strong>Laravel 12/13</strong> serta <strong>Livewire 3</strong>: <strong>SISUKA (Sistem Informasi Desa Sukasari)</strong>, <strong>SIDESA (Buku Administrasi Pemdes A.1-D.4)</strong>, <strong>Portal Berita Informia.id</strong>, <strong>Sistem Penilaian Lomba Tingkat II (LT-II) Kwarran Gunung Kaler</strong>, dan <strong>Portal Organisasi PMII</strong>.
+        </p>
+
+        <div class="project-meta-grid">
+          <div class="project-meta-item">
+            <span class="project-meta-label">My Role (Peran Saya)</span>
+            <p class="project-meta-value">Lead Full-Stack Web Developer (Perancangan skema database, RBAC Spatie Permission, layanan transaksi buku kas, REST API Sanctum, dan pengujian PHPUnit 11/12)</p>
+          </div>
+
+          <div class="project-meta-item">
+            <span class="project-meta-label">Technology (Tech Stack)</span>
+            <ul class="project-stack-list" aria-label="Teknologi Project 1">
+              <li class="project-stack-chip">Laravel 12 &amp; 13 (PHP 8.3)</li>
+              <li class="project-stack-chip">Livewire 3 &amp; Volt</li>
+              <li class="project-stack-chip">Alpine.js &amp; Tailwind CSS</li>
+              <li class="project-stack-chip">MySQL &amp; MariaDB 11.4</li>
+              <li class="project-stack-chip">Redis 7 &amp; Sanctum API</li>
+            </ul>
+          </div>
+
+          <div class="project-meta-item">
+            <span class="project-meta-label">Production Domains &amp; Repos</span>
+            <p class="project-meta-value">sukasari.id | desakudigital.online | informia.id | GitHub: Fajri2301</p>
+          </div>
+        </div>
+
+        <div class="project-external-links">
+          <a href="https://sukasari.id" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--blue">Web: Desa Sukasari (sukasari.id)</a>
+          <a href="https://desakudigital.online" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--outline">Web: Desaku Digital (desakudigital.online)</a>
+          <a href="https://informia.id" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--outline">Web: Portal Berita (informia.id)</a>
+          <a href="https://github.com/Fajri2301/pmii-uin-jakarta-website" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--outline">Repo: PMII Website (GitHub)</a>
+        </div>
+      </header>
+
+      <section class="project-case-grid" aria-label="Problem, Solution, Features, dan Outcome">
+        <article class="project-case-box">
+          <h2 class="project-case-title">Problem (Tantangan)</h2>
+          <p class="project-case-text">
+            Pemerintah Desa Sukasari masih mengelola buku administrasi desa (Kependudukan B.1-B.6, Keuangan APBDes C.1-C.4, Pembangunan D.1-D.4, dan Administrasi Umum A.1-A.9) secara terpisah di lembar kerja manual. Di sisi lain, redaksi <strong>Informia.id</strong> membutuhkan alur editorial berjenjang, sedangkan panitia <strong>Lomba Tingkat II (LT-II) Kwarran Gunung Kaler</strong> memerlukan rekapitulasi nilai 3 juri dan potongan penalti juknis yang bebas manipulasi.
+          </p>
+        </article>
+
+        <article class="project-case-box">
+          <h2 class="project-case-title">Solution (Solusi Arsitektur)</h2>
+          <p class="project-case-text">
+            Membangun arsitektur modular berbasis <strong>Laravel 12/13</strong>: menggunakan trait isolasi multi-desa (<code>BelongsToVillage</code>), perhitungan kas server-side dengan <code>lockForUpdate()</code> dan <code>bcmath</code> pada <code>CashBalanceService</code>, alur pengajuan RT ke Operator dengan <code>AuditObserver</code> dan <code>PrivateDocumentController</code> pada <strong>SISUKA</strong>, serta validasi dua tahap (<em>maker-checker</em>) pada sistem penjurian <strong>LT-II</strong>.
+          </p>
+        </article>
+
+        <article class="project-case-box">
+          <h2 class="project-case-title">Features (Fitur Utama Terverifikasi)</h2>
+          <ul class="project-feature-list">
+            <li><strong>SISUKA Desa Sukasari:</strong> Hierarki Dusun, RW, RT, manajemen KK &amp; Penduduk, alur pengajuan RT (<code>PERUBAHAN_KK</code>), cek NIK publik 16 digit, serta REST API <code>/api/v1</code> (Sanctum).</li>
+            <li><strong>SIDESA (Buku Adm. Pemdes):</strong> Digitalisasi buku A.1-A.9, B.1-B.6, C.1-C.4 (APBDes pohon &amp; RAB), dan D.1-D.4 lengkap dengan ekspor Excel/PDF.</li>
+            <li><strong>Portal Berita Informia.id:</strong> Public SSR + Newsroom CMS 5 role (Penulis, Author, Editor, Admin, Super Admin), antrean review, pustaka media dengan checksum, dan cache Redis.</li>
+            <li><strong>Sistem Penilaian LT-II Pramuka:</strong> 5 panel akses, input nilai 3 juri disertai unggah foto lembar nilai fisik, penalti juknis otomatis, dan alur sanggahan nilai.</li>
+            <li><strong>Portal Organisasi PMII:</strong> Manajemen kader, pembuatan Kartu Tanda Anggota (KTA) digital, statistik Chart.js, dan publikasi kegiatan komisariat.</li>
+          </ul>
+        </article>
+
+        <article class="project-case-box">
+          <h2 class="project-case-title">Outcome &amp; Pengujian</h2>
+          <p class="project-case-text">
+            Seluruh modul inti telah melewati pengujian otomatis dan integrasi:
+            <br><br>
+            <strong>SISUKA Backend &amp; Mobile:</strong> 34 pengujian fitur PHPUnit (94 assertions) pada backend Laravel 13 dan 29 pengujian widget/unit pada klien Flutter lulus tanpa galat.
+            <br>
+            <strong>SIDESA &amp; Informia.id:</strong> Dilengkapi pipeline CI GitHub Actions (Laravel Pint + PHPUnit SQLite in-memory) serta pencatatan log audit imutabel pada tabel <code>audit_logs</code>.
+          </p>
+        </article>
+      </section>
+
+      <section class="project-gallery-section" aria-labelledby="gallery-heading-1">
+        <h2 id="gallery-heading-1" class="project-gallery-heading heading-mixed">
+          <span class="display-bold">PROJECT</span>
+          <span class="serif-italic">gallery &amp; artifacts</span>
+        </h2>
+
+        <div class="project-gallery-grid">
+          <figure class="project-gallery-item">
+            <img src="../assets/img/project-1-real.png" alt="Tangkapan layar asli aplikasi SISUKA Desa Sukasari, Portal Berita Informia.id, dan Kartu Anggota PMII" width="960" height="600">
+            <figcaption class="project-gallery-caption">Artefak Visual Asli: Banner OG Portal Berita Informia.id, Kartu Anggota Digital PMII UIN Syarif Hidayatullah, serta layar Cek NIK &amp; Berita Desa pada SISUKA Desa Sukasari.</figcaption>
+          </figure>
+
+          <figure class="project-gallery-item">
+            <img src="../assets/img/project-1.png" alt="Diagram arsitektur teknis Sistem Informasi Desa, Portal PMII, dan Informia.id" width="960" height="600">
+            <figcaption class="project-gallery-caption">Diagram Arsitektur Sistem: Alur request multi-aplikasi dari klien web dan mobile menuju Controller Laravel, Service Layer, RBAC Spatie Permission, hingga basis data relasional.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <nav class="project-pager" aria-label="Navigasi antar project">
+        <a href="project-3.html" class="btn-pill btn-pill--outline">Sebelumnya: Creative Tech &amp; NARAFEST</a>
+        <a href="../index.html#projects" class="btn-pill btn-pill--outline">Semua Project</a>
+        <a href="project-2.html" class="btn-pill btn-pill--blue">Berikutnya: Aplikasi Mobile Flutter</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Fajri Khaerullah</strong> (Full-Stack Developer &amp; Creative Technologist) | Based in Indonesia
+      </div>
+      <ul class="footer-links" aria-label="Tautan media sosial Fajri Khaerullah">
+        <li><a href="https://github.com/Fajri2301" target="_blank" rel="noopener noreferrer">GitHub (@Fajri2301)</a></li>
+        <li><a href="https://instagram.com/fajrikhaerullah23" target="_blank" rel="noopener noreferrer">Instagram (@fajrikhaerullah23)</a></li>
+        <li><a href="https://www.facebook.com/share/1CyBPNU9N8/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/tags.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

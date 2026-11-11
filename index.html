@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio pribadi Fajri Khaerullah: Full-Stack Developer &amp; Creative Technologist. Pengembangan aplikasi web Laravel, mobile Flutter, teknologi kreatif, dan komunikasi digital.">
+  <title>Fajri Khaerullah | Full-Stack Developer &amp; Creative Technologist</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B3BFF'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-size='15' font-weight='800'%3EFK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- Header: Logo kiri, Pill "Change the Mode" tengah, Hamburger kanan -->
+  <header class="site-header">
+    <div class="container header-bar">
+      <a href="index.html" class="site-logo">FAJRI.</a>
+
+      <div class="header-center">
+        <button type="button" id="mode-toggle-btn" class="mode-toggle-pill" aria-pressed="false" aria-label="Change the Mode (Ganti tema gelap atau terang)">
+          <svg class="mode-toggle-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2.5 13.5L13.5 2.5M10.5 2.5H13.5V5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Change the Mode</span>
+        </button>
+      </div>
+
+      <button type="button" id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-controls="menu-overlay" aria-label="Buka menu navigasi">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu Overlay -->
+  <div id="menu-overlay" class="menu-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu Navigasi Utama">
+    <div class="menu-overlay-top">
+      <span class="site-logo">FAJRI.</span>
+      <button type="button" id="menu-close-btn" class="menu-close-btn" aria-label="Tutup menu navigasi">
+        Close (Esc)
+      </button>
+    </div>
+
+    <nav class="menu-nav" aria-label="Tautan bagian halaman">
+      <ul class="menu-nav-list">
+        <li>
+          <a href="#hero" class="menu-nav-link">
+            <span class="display-bold">01</span>
+            <span class="serif-italic">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="menu-nav-link">
+            <span class="display-bold">02</span>
+            <span class="serif-italic">About &amp; Pillars</span>
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="menu-nav-link">
+            <span class="display-bold">03</span>
+            <span class="serif-italic">Skills &amp; Stack</span>
+          </a>
+        </li>
+        <li>
+          <a href="#projects" class="menu-nav-link">
+            <span class="display-bold">04</span>
+            <span class="serif-italic">Selected projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="menu-nav-link">
+            <span class="display-bold">05</span>
+            <span class="serif-italic">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="menu-overlay-footer">
+      <span>Fajri Khaerullah | Full-Stack Developer &amp; Creative Technologist</span>
+      <span>GitHub: github.com/Fajri2301 | Instagram: @fajrikhaerullah23</span>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- Section 1: Hero dengan teks raksasa di belakang foto cutout -->
+    <section id="hero" class="hero-section" aria-label="Perkenalan Fajri Khaerullah">
+      <div class="container">
+        <div class="hero-stage">
+          <!-- Layer 1 (z-index: 1): Teks campuran di belakang subjek foto -->
+          <h1 class="hero-backdrop-text heading-mixed">
+            <span class="hero-serif-row">
+              <span class="serif-italic">I'm</span>
+              <span class="serif-italic">programmer</span>
+            </span>
+            <span class="hero-giant-word display-bold">PROGRAMMER</span>
+          </h1>
+
+          <!-- Layer 2 (z-index: 2): Foto PNG cutout transparan menimpa sebagian heading -->
+          <div class="hero-figure-wrap">
+            <img
+              src="assets/img/fajri-cutout.png"
+              alt="Potret Fajri Khaerullah, Full-Stack Developer dan Creative Technologist"
+              width="1024"
+              height="954"
+              class="hero-cutout-img"
+            >
+          </div>
+
+          <!-- Layer 3 (z-index: 3): Tombol pill biru di bawah foto -->
+          <div class="hero-cta-layer">
+            <a href="#contact" class="btn-pill btn-pill--blue" title="Hubungi Fajri Khaerullah melalui Instagram, Facebook, atau GitHub">
+              Let's Chat
+            </a>
+          </div>
+        </div>
+
+        <!-- Teks kecil rata kiri dan kanan di bagian bawah Hero -->
+        <div class="hero-captions-bar">
+          <div class="hero-caption-left">
+            <span class="hero-caption-rule" aria-hidden="true"></span>
+            <p class="hero-caption-bold">
+              FULL-STACK DEVELOPER &amp; CREATIVE TECHNOLOGIST. SOFTWARE DEVELOPMENT, CREATIVE TECH, &amp; DIGITAL INNOVATION.
+            </p>
+          </div>
+
+          <p class="hero-caption-right">
+            Building Digital Solutions. Creating Meaningful Experiences. Menggabungkan pemrograman web, aplikasi mobile, desain, riset, dan komunikasi digital.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Latar biru penuh "ALL YOUR skills" + tumpukan tag pill putih -->
+    <section id="skills" class="skills-section" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="skills-top-grid">
+          <h2 id="skills-title" class="skills-heading heading-mixed">
+            <span class="display-bold">ALL YOUR</span>
+            <span class="serif-italic">skills</span>
+          </h2>
+
+          <div class="skills-aside">
+            <p class="skills-desc">
+              Pengembangan sistem informasi berbasis web (PHP, Laravel, Livewire, Filament), aplikasi mobile lintas platform (Flutter, Dart), pemrograman C++, hingga produksi multimedia kreatif (Remotion, AI tools) di lingkungan Linux Ubuntu.
+            </p>
+            <a href="#contact" class="btn-pill btn-pill--white" title="Hubungi Fajri Khaerullah melalui media sosial">
+              Book a Call
+            </a>
+          </div>
+        </div>
+
+        <!-- Deretan tag pill putih bertulisan serif italic tersusun menumpuk -->
+        <ul class="skills-pile" aria-label="Daftar keahlian dan teknologi">
+          <li class="skill-pill" tabindex="0">Laravel &amp; PHP</li>
+          <li class="skill-pill" tabindex="0">Flutter &amp; Dart</li>
+          <li class="skill-pill" tabindex="0">Livewire &amp; Filament</li>
+          <li class="skill-pill" tabindex="0">HTML, CSS &amp; JS</li>
+          <li class="skill-pill" tabindex="0">REST API &amp; SQL</li>
+          <li class="skill-pill" tabindex="0">UI/UX &amp; Branding</li>
+          <li class="skill-pill" tabindex="0">Remotion &amp; Motion</li>
+          <li class="skill-pill" tabindex="0">AI Creative Production</li>
+          <li class="skill-pill" tabindex="0">Digital Storytelling</li>
+          <li class="skill-pill" tabindex="0">C++ &amp; Ubuntu CLI</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section About Me & Lima Pilar Keahlian -->
+    <section id="about" class="about-section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <span class="project-card-meta">PERSONAL PORTFOLIO / 2026</span>
+            <h2 id="about-title" class="projects-heading heading-mixed">
+              <span class="display-bold">ABOUT</span>
+              <span class="serif-italic">me</span>
+            </h2>
+          </div>
+
+          <div class="about-narrative">
+            <p>
+              Saya adalah seorang <strong>Full-Stack Developer dan Creative Technologist</strong> yang memiliki ketertarikan pada pengembangan teknologi digital, rekayasa perangkat lunak, desain, serta komunikasi kreatif.
+            </p>
+            <p>
+              Saya memiliki pengalaman dalam membangun berbagai solusi digital, mulai dari sistem informasi berbasis web menggunakan Laravel, pengembangan aplikasi mobile menggunakan Flutter, hingga eksplorasi teknologi multimedia dan animasi berbasis AI.
+            </p>
+            <p>
+              Dalam proses pengembangan, saya terbiasa bekerja mulai dari perancangan ide, analisis kebutuhan, penyusunan arsitektur sistem, pengembangan fitur, pengelolaan database, hingga implementasi dan penyempurnaan produk. Di luar pengembangan perangkat lunak, saya juga aktif mengeksplorasi desain visual, branding, produksi multimedia, riset, dan kampanye digital yang berkaitan dengan isu sosial, lingkungan, dan kebudayaan.
+            </p>
+            <p>
+              Bagi saya, teknologi bukan sekadar tentang menulis kode, tetapi tentang bagaimana membangun solusi, menciptakan pengalaman, dan menghadirkan dampak melalui inovasi.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lima Pilar Keahlian -->
+        <div class="pillars-grid" aria-label="Lima pilar keahlian utama">
+          <article class="pillar-card">
+            <span class="pillar-num">PILAR 01 / ENGINEERING</span>
+            <h3 class="pillar-title">Software Engineering</h3>
+            <ul class="pillar-list">
+              <li>Full-Stack Web Development (Laravel, PHP, Livewire, Filament)</li>
+              <li>Backend Development &amp; Application Architecture</li>
+              <li>Database Design &amp; SQL Management</li>
+              <li>REST API dan integrasi sistem</li>
+            </ul>
+          </article>
+
+          <article class="pillar-card">
+            <span class="pillar-num">PILAR 02 / MOBILE</span>
+            <h3 class="pillar-title">Mobile Application Development</h3>
+            <ul class="pillar-list">
+              <li>Flutter &amp; Dart Cross-platform Development</li>
+              <li>Mobile UI Implementation</li>
+              <li>API Integration pada perangkat bergerak</li>
+              <li>Mobile Database &amp; State Management</li>
+            </ul>
+          </article>
+
+          <article class="pillar-card">
+            <span class="pillar-num">PILAR 03 / CREATIVE TECH</span>
+            <h3 class="pillar-title">Creative Technology &amp; Design</h3>
+            <ul class="pillar-list">
+              <li>UI/UX Exploration &amp; Visual Branding</li>
+              <li>Graphic Design untuk identitas acara dan produk</li>
+              <li>AI-assisted Creative Production</li>
+              <li>Motion Graphics &amp; Programmatic Animation (Remotion)</li>
+            </ul>
+          </article>
+
+          <article class="pillar-card">
+            <span class="pillar-num">PILAR 04 &amp; 05 / CAMPAIGN &amp; RESEARCH</span>
+            <h3 class="pillar-title">Digital Campaign, Research &amp; Multimedia</h3>
+            <ul class="pillar-list">
+              <li>Digital Campaign Strategy &amp; Environmental Storytelling</li>
+              <li>Research &amp; Data Interpretation</li>
+              <li>Documentary Production &amp; Multimedia Development</li>
+              <li>Cultural &amp; Social Documentation</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: "SELECTED projects" dengan 3 kartu project yang menaut ke halaman masing-masing -->
+    <section id="projects" class="projects-section" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="projects-header">
+          <h2 id="projects-title" class="projects-heading heading-mixed">
+            <span class="display-bold">SELECTED</span>
+            <span class="serif-italic">projects</span>
+          </h2>
+          <p class="projects-subtext">
+            Studi kasus pilihan dari tiga ranah utama: Software Engineering (Web &amp; Laravel), Mobile Application (Flutter), serta Creative Technology &amp; Digital Production.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Kartu Project 1 -->
+          <a href="projects/project-1.html" class="project-card">
+            <div class="project-card-thumb">
+              <img
+                src="assets/img/project-1-real.png"
+                alt="Tangkapan layar asli SISUKA Desa Sukasari, Portal Berita Informia.id, dan Kartu Anggota PMII"
+                width="960"
+                height="600"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-card-body">
+              <div>
+                <span class="project-card-meta">01 / LARAVEL 12-13 &amp; ENTERPRISE WEB</span>
+                <h3 class="project-card-title">SISUKA &amp; SIDESA, Informia.id, LT-II Pramuka &amp; Portal PMII</h3>
+                <p class="project-card-desc">
+                  Sistem informasi publik berbasis Laravel 12/13, Livewire 3, dan MariaDB: administrasi kependudukan &amp; APBDes desa (SISUKA &amp; SIDESA), Newsroom CMS (Informia.id), penilaian penjurian LT-II Kwarran Gunung Kaler, serta sistem kaderisasi PMII.
+                </p>
+              </div>
+              <span class="project-card-cta">Baca Studi Kasus (01)</span>
+            </div>
+          </a>
+
+          <!-- Kartu Project 2 -->
+          <a href="projects/project-2.html" class="project-card">
+            <div class="project-card-thumb">
+              <img
+                src="assets/img/project-2-real.png"
+                alt="Tangkapan layar aplikasi Flutter SiPRANA Kwarran dan Sukasari Mobile"
+                width="960"
+                height="600"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-card-body">
+              <div>
+                <span class="project-card-meta">02 / FLUTTER MOBILE &amp; GO REST API</span>
+                <h3 class="project-card-title">Sukasari Mobile, SiPRANA Pramuka, Danantara &amp; Toko Emas</h3>
+                <p class="project-card-desc">
+                  Ekosistem aplikasi mobile Flutter 3.44 (Dart 3.12) terintegrasi Sanctum Bearer &amp; Go REST API: layanan cek NIK dan pengajuan RT warga Desa Sukasari, KTA digital &amp; poin keaktifan SiPRANA, serta dompet digital Danantara &amp; Toko Emas.
+                </p>
+              </div>
+              <span class="project-card-cta">Baca Studi Kasus (02)</span>
+            </div>
+          </a>
+
+          <!-- Kartu Project 3 -->
+          <a href="projects/project-3.html" class="project-card">
+            <div class="project-card-thumb">
+              <img
+                src="assets/img/project-3-real.png"
+                alt="Visual identitas Creathink Fest Preneur, maskot 3D, dan katalog TokoBunga FloraBot AI"
+                width="960"
+                height="600"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-card-body">
+              <div>
+                <span class="project-card-meta">03 / CREATIVE TECH, AI &amp; BRANDING</span>
+                <h3 class="project-card-title">Creathink Fest Preneur, FloraBot AI, NARAFEST &amp; Dokumenter</h3>
+                <p class="project-card-desc">
+                  Platform ekosistem wirausaha berbasis Laravel 12 &amp; Filament v3 (Creathink Fest Preneur), E-Commerce dengan chatbot NLP OpenRouter &amp; WebSocket (FloraBot), riset EduFocus AI &amp; SPK TOPSIS, hingga produksi dokumenter Arca dan Tapak.
+                </p>
+              </div>
+              <span class="project-card-cta">Baca Studi Kasus (03)</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Inventaris Lengkap 3 Kategori Besar Proyek -->
+        <div class="inventory-section">
+          <span class="project-card-meta">PORTFOLIO INVENTORY / 2024 - 2026</span>
+          <h3 class="pillar-title">Arsip Proyek Berdasarkan Ranah Keahlian</h3>
+
+          <div class="inventory-grid">
+            <div class="inventory-card">
+              <span class="pillar-num">A. SOFTWARE ENGINEERING</span>
+              <h4 class="pillar-title">Web &amp; Mobile Platforms</h4>
+              <ul class="pillar-list">
+                <li><strong>SISUKA Desa Sukasari</strong> (<a href="https://sukasari.id" target="_blank" rel="noopener noreferrer">sukasari.id</a> | Laravel 13 &amp; Sanctum API)</li>
+                <li><strong>Desaku Digital / SIDESA</strong> (<a href="https://desakudigital.online" target="_blank" rel="noopener noreferrer">desakudigital.online</a> | Buku Adm. Desa A.1-D.4)</li>
+                <li><strong>Portal Berita Informia.id</strong> (<a href="https://informia.id" target="_blank" rel="noopener noreferrer">informia.id</a> | Laravel 13, Livewire 3 &amp; Redis 7)</li>
+                <li><strong>Sistem Lomba Pramuka LT-II Kwarran Gunung Kaler</strong> (Laravel 13 &amp; 3-Judge Scoring)</li>
+                <li><strong>Sistem Informasi Organisasi PMII</strong> (Laravel 12, Alpine.js &amp; KTA Digital)</li>
+                <li><strong>Sukasari Mobile &amp; SiPRANA / SiGULER</strong> (Flutter 3.44 &amp; Dart 3.12)</li>
+                <li><strong>Danantara Bank &amp; Toko Emas Digital</strong> (Flutter Mobile &amp; Go REST API)</li>
+              </ul>
+            </div>
+
+            <div class="inventory-card">
+              <span class="pillar-num">B. CREATIVE TECHNOLOGY</span>
+              <h4 class="pillar-title">Branding, AI &amp; Multimedia</h4>
+              <ul class="pillar-list">
+                <li><strong>Creathink Fest Preneur</strong> (<a href="https://creathinkfestpreneur.com" target="_blank" rel="noopener noreferrer">creathinkfestpreneur.com</a> | Laravel 12 &amp; Filament v3)</li>
+                <li><strong>Zanki Dausat Flower + FloraBot AI</strong> (<a href="https://zankidausatflower.com" target="_blank" rel="noopener noreferrer">zankidausatflower.com</a> | OpenRouter NLP &amp; WebSocket)</li>
+                <li><strong>EduFocus AI &amp; SPK TOPSIS</strong> (Python AI Tracker &amp; Decision Support System)</li>
+                <li><strong>NARAFEST &amp; AI Character Animation</strong> (Festival Branding &amp; Programmatic Motion)</li>
+                <li><strong>Dokumenter Arca dan Tapak</strong> (Riset Lapangan &amp; Produksi Dokumenter Budaya)</li>
+              </ul>
+            </div>
+
+            <div class="inventory-card">
+              <span class="pillar-num">C. RESEARCH &amp; CAMPAIGN</span>
+              <h4 class="pillar-title">Digital Communication</h4>
+              <ul class="pillar-list">
+                <li><strong>Kampanye Kebakaran Hutan dan Lahan</strong> (Edukasi publik)</li>
+                <li><strong>Kampanye Pengelolaan Sampah</strong> (Advokasi lingkungan)</li>
+                <li><strong>Konten Edukasi Lingkungan Berbasis Data</strong> (Riset visual)</li>
+                <li><strong>Dokumentasi &amp; Komunikasi Kebudayaan</strong> (Riset lapangan)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Catatan Transparansi Repositori & Dokumentasi -->
+          <div class="doc-reminder-card" role="note" aria-label="Catatan status repositori dan domain proyek">
+            <h4 class="doc-reminder-title">Domain Produksi, Status Repositori &amp; Dokumentasi Proyek</h4>
+            <p class="doc-reminder-text">
+              Portofolio ini merangkum proyek yang telah dideploy pada domain produksi (<a href="https://sukasari.id" target="_blank" rel="noopener noreferrer">sukasari.id</a>, <a href="https://desakudigital.online" target="_blank" rel="noopener noreferrer">desakudigital.online</a>, <a href="https://informia.id" target="_blank" rel="noopener noreferrer">informia.id</a>, <a href="https://creathinkfestpreneur.com" target="_blank" rel="noopener noreferrer">creathinkfestpreneur.com</a>, dan <a href="https://zankidausatflower.com" target="_blank" rel="noopener noreferrer">zankidausatflower.com</a>) beserta 25 repositori publik di <a href="https://github.com/Fajri2301" target="_blank" rel="noopener noreferrer">github.com/Fajri2301</a>. Kode sumber untuk sistem pemerintahan desa dan instansi mitra dikelola sebagai <strong>Private Repository</strong> demi keamanan data warga.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer / Kontak -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Fajri Khaerullah</strong> (Full-Stack Developer &amp; Creative Technologist) | Based in Indonesia
+      </div>
+      <ul class="footer-links" aria-label="Tautan media sosial Fajri Khaerullah">
+        <li><a href="https://github.com/Fajri2301" target="_blank" rel="noopener noreferrer">GitHub (@Fajri2301)</a></li>
+        <li><a href="https://instagram.com/fajrikhaerullah23" target="_blank" rel="noopener noreferrer">Instagram (@fajrikhaerullah23)</a></li>
+        <li><a href="https://www.facebook.com/share/1CyBPNU9N8/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/tags.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
