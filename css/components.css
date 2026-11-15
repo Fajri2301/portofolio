@@ -545,3 +545,14 @@
 .menu-overlay-footer {
   align-items: center;
 }
+
+/* Ikon kontak di hero, di bawah teks keterangan kiri */
+.hero-socials {
+  margin-top: 1rem;
+}
+
+.hero-socials .social-icon-btn {
+  background-color: var(--color-bg);
+  border-color: var(--color-border-subtle);
+  box-shadow: 0 8px 20px rgba(17, 17, 40, 0.08);
+}
