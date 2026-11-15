@@ -213,6 +213,12 @@
     var(--color-bg);
 }
 
+.project-phone--green {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(22, 163, 74, 0.18), transparent 65%),
+    var(--color-bg);
+}
+
 .project-phone img {
   width: 100%;
   max-width: 270px;
