@@ -1,0 +1,9 @@
+# State tool AI lokal (oh-my-claudecode)
+.omc/
+
+# File sistem & editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
