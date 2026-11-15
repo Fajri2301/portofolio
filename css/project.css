@@ -207,6 +207,12 @@
     var(--color-bg);
 }
 
+.project-phone--gold {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(201, 146, 20, 0.2), transparent 65%),
+    var(--color-bg);
+}
+
 .project-phone img {
   width: 100%;
   max-width: 270px;
@@ -236,13 +242,13 @@
 }
 
 @media (min-width: 768px) {
-  .project-gallery-item--phone .project-gallery-link {
+  .project-gallery-item--wide.project-gallery-item--phone .project-gallery-link {
     display: grid;
     grid-template-columns: minmax(0, 360px) 1fr;
     align-items: center;
   }
 
-  .project-gallery-item--phone .project-gallery-caption {
+  .project-gallery-item--wide.project-gallery-item--phone .project-gallery-caption {
     padding: 2rem 2.5rem;
     border-top: 0;
   }
