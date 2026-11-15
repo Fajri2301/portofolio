@@ -198,6 +198,56 @@
   margin-left: 0.35rem;
 }
 
+.project-phone {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(43, 59, 255, 0.16), transparent 65%),
+    var(--color-bg);
+}
+
+.project-phone img {
+  width: 100%;
+  max-width: 270px;
+  border: 7px solid #111111;
+  border-radius: 34px;
+  box-shadow: 0 30px 60px rgba(17, 17, 40, 0.25);
+}
+
+.project-gallery-item--phone .project-gallery-caption {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.project-gallery-item--phone .project-badge {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.project-phone-title {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .project-gallery-item--phone .project-gallery-link {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) 1fr;
+    align-items: center;
+  }
+
+  .project-gallery-item--phone .project-gallery-caption {
+    padding: 2rem 2.5rem;
+    border-top: 0;
+  }
+}
+
 .project-gallery-caption {
   padding: 0.85rem 1.25rem;
   font-size: 0.85rem;
