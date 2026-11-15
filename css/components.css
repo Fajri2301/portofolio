@@ -480,3 +480,68 @@
     padding: 0.9rem 2.6rem;
   }
 }
+
+/* Tautan kontak & media sosial dengan ikon (footer dan menu) */
+.social-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.55rem 1.05rem;
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color 200ms var(--ease-smooth), border-color 200ms var(--ease-smooth), color 200ms var(--ease-smooth), transform 200ms var(--ease-smooth);
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  background-color: var(--color-primary-solid);
+  border-color: var(--color-primary-solid);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: 50%;
+  color: var(--color-text);
+  transition: background-color 200ms var(--ease-smooth), border-color 200ms var(--ease-smooth), color 200ms var(--ease-smooth), transform 200ms var(--ease-smooth);
+}
+
+.social-icon-btn:hover,
+.social-icon-btn:focus-visible {
+  background-color: var(--color-primary-solid);
+  border-color: var(--color-primary-solid);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.menu-overlay-footer {
+  align-items: center;
+}
