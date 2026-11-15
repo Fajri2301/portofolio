@@ -15,6 +15,10 @@
         theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
       document.documentElement.setAttribute("data-theme", theme);
+      /* Animasi intro hanya aktif bila pengguna tidak memilih "kurangi gerakan". */
+      if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        document.documentElement.classList.add("motion-ok");
+      }
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +28,11 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/motion.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-bar">
@@ -146,21 +152,21 @@
       </header>
 
       <section class="project-case-grid" aria-label="Problem, Solution, Features, dan Outcome">
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 0;">
           <h2 class="project-case-title">Problem (Tantangan)</h2>
           <p class="project-case-text">
             Ketua RT dan warga Desa Sukasari membutuhkan akses cepat dari ponsel untuk memverifikasi status kependudukan (NIK 16 digit) dan mengajukan pembaruan Kartu Keluarga tanpa harus bolak-balik ke balai desa. Sementara itu, anggota Pramuka Penegak memerlukan aplikasi terpadu (<strong>SiPRANA</strong>) untuk memantau Nomor Tanda Anggota (NTA), poin keaktifan, kehadiran QR, dan pencapaian SKU/SKK.
           </p>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 1;">
           <h2 class="project-case-title">Solution (Solusi Arsitektur)</h2>
           <p class="project-case-text">
             Membangun aplikasi klien <strong>Flutter</strong> dengan autentikasi berbasis token (<code>flutter_secure_storage</code>) dan unggah dokumen kamera/galeri (<code>image_picker</code>) yang berkomunikasi dengan endpoint <code>/api/v1</code> pada <strong>Sukasari Mobile</strong>, serta merancang microservice <strong>Go (`be-tokoemas-golang` dan `be-emoney`)</strong> untuk menangani mutasi saldo dompet digital dan katalog harga emas secara ringan.
           </p>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 0;">
           <h2 class="project-case-title">Features (Fitur Utama Terverifikasi)</h2>
           <ul class="project-feature-list">
             <li><strong>Sukasari Mobile (`sukasari_app`):</strong> Cek NIK publik tanpa login, portal baca Berita Desa Sukasari Kecamatan Rajeg, serta modul khusus RT untuk melihat daftar KK/warga dan mengirim pengajuan perubahan data beserta lampiran dokumen.</li>
@@ -170,7 +176,7 @@
           </ul>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 1;">
           <h2 class="project-case-title">Outcome &amp; Pengujian</h2>
           <p class="project-case-text">
             Menghadirkan pengalaman pengguna lintas platform yang konsisten dengan pemisahan jelas antara mode publik dan mode terautentikasi:
@@ -183,25 +189,25 @@
       </section>
 
       <section class="project-gallery-section" aria-labelledby="gallery-heading-2">
-        <h2 id="gallery-heading-2" class="project-gallery-heading heading-mixed">
+        <h2 id="gallery-heading-2" class="project-gallery-heading heading-mixed" data-scroll-x="40">
           <span class="display-bold">PROJECT</span>
           <span class="serif-italic">gallery &amp; screens</span>
         </h2>
 
         <div class="project-gallery-grid">
-          <figure class="project-gallery-item">
+          <figure class="project-gallery-item" data-reveal="scale" style="--d: 0;">
             <img src="../assets/img/project-2-real.png" alt="Tangkapan layar asli antarmuka aplikasi Flutter SiPRANA dan Sukasari Mobile" width="960" height="600">
             <figcaption class="project-gallery-caption">Tangkapan Layar Asli UI Mobile: Dashboard utama SiPRANA (kartu NTA, poin keaktifan, QR presensi), Portal Anggota, serta layar baca berita dan ikon resmi APK Desa Sukasari.</figcaption>
           </figure>
 
-          <figure class="project-gallery-item">
+          <figure class="project-gallery-item" data-reveal="scale" style="--d: 1;">
             <img src="../assets/img/project-2.png" alt="Diagram arsitektur klien Flutter dan backend Go REST API" width="960" height="600">
             <figcaption class="project-gallery-caption">Diagram Arsitektur Mobile &amp; Microservice: Integrasi layar Flutter (Dart) melalui HTTP/JSON dan Bearer Token menuju layanan backend Go dan Laravel Sanctum.</figcaption>
           </figure>
         </div>
       </section>
 
-      <nav class="project-pager" aria-label="Navigasi antar project">
+      <nav class="project-pager" data-reveal aria-label="Navigasi antar project">
         <a href="project-1.html" class="btn-pill btn-pill--outline">Sebelumnya: Sistem Informasi Desa &amp; Web</a>
         <a href="../index.html#projects" class="btn-pill btn-pill--outline">Semua Project</a>
         <a href="project-3.html" class="btn-pill btn-pill--blue">Berikutnya: Creative Tech &amp; NARAFEST</a>
@@ -225,6 +231,7 @@
 
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
+  <script src="../js/motion.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -15,6 +15,10 @@
         theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
       document.documentElement.setAttribute("data-theme", theme);
+      /* Animasi intro hanya aktif bila pengguna tidak memilih "kurangi gerakan". */
+      if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        document.documentElement.classList.add("motion-ok");
+      }
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +28,11 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/motion.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-bar">
@@ -145,21 +151,21 @@
       </header>
 
       <section class="project-case-grid" aria-label="Problem, Solution, Features, dan Outcome">
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 0;">
           <h2 class="project-case-title">Problem (Tantangan)</h2>
           <p class="project-case-text">
             Pemerintah Desa Sukasari masih mengelola buku administrasi desa (Kependudukan B.1-B.6, Keuangan APBDes C.1-C.4, Pembangunan D.1-D.4, dan Administrasi Umum A.1-A.9) secara terpisah di lembar kerja manual. Di sisi lain, redaksi <strong>Informia.id</strong> membutuhkan alur editorial berjenjang, sedangkan panitia <strong>Lomba Tingkat II (LT-II) Kwarran Gunung Kaler</strong> memerlukan rekapitulasi nilai 3 juri dan potongan penalti juknis yang bebas manipulasi.
           </p>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 1;">
           <h2 class="project-case-title">Solution (Solusi Arsitektur)</h2>
           <p class="project-case-text">
             Membangun arsitektur modular berbasis <strong>Laravel 12/13</strong>: menggunakan trait isolasi multi-desa (<code>BelongsToVillage</code>), perhitungan kas server-side dengan <code>lockForUpdate()</code> dan <code>bcmath</code> pada <code>CashBalanceService</code>, alur pengajuan RT ke Operator dengan <code>AuditObserver</code> dan <code>PrivateDocumentController</code> pada <strong>SISUKA</strong>, serta validasi dua tahap (<em>maker-checker</em>) pada sistem penjurian <strong>LT-II</strong>.
           </p>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 0;">
           <h2 class="project-case-title">Features (Fitur Utama Terverifikasi)</h2>
           <ul class="project-feature-list">
             <li><strong>SISUKA Desa Sukasari:</strong> Hierarki Dusun, RW, RT, manajemen KK &amp; Penduduk, alur pengajuan RT (<code>PERUBAHAN_KK</code>), cek NIK publik 16 digit, serta REST API <code>/api/v1</code> (Sanctum).</li>
@@ -170,7 +176,7 @@
           </ul>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 1;">
           <h2 class="project-case-title">Outcome &amp; Pengujian</h2>
           <p class="project-case-text">
             Seluruh modul inti telah melewati pengujian otomatis dan integrasi:
@@ -183,25 +189,25 @@
       </section>
 
       <section class="project-gallery-section" aria-labelledby="gallery-heading-1">
-        <h2 id="gallery-heading-1" class="project-gallery-heading heading-mixed">
+        <h2 id="gallery-heading-1" class="project-gallery-heading heading-mixed" data-scroll-x="40">
           <span class="display-bold">PROJECT</span>
           <span class="serif-italic">gallery &amp; artifacts</span>
         </h2>
 
         <div class="project-gallery-grid">
-          <figure class="project-gallery-item">
+          <figure class="project-gallery-item" data-reveal="scale" style="--d: 0;">
             <img src="../assets/img/project-1-real.png" alt="Tangkapan layar asli aplikasi SISUKA Desa Sukasari, Portal Berita Informia.id, dan Kartu Anggota PMII" width="960" height="600">
             <figcaption class="project-gallery-caption">Artefak Visual Asli: Banner OG Portal Berita Informia.id, Kartu Anggota Digital PMII UIN Syarif Hidayatullah, serta layar Cek NIK &amp; Berita Desa pada SISUKA Desa Sukasari.</figcaption>
           </figure>
 
-          <figure class="project-gallery-item">
+          <figure class="project-gallery-item" data-reveal="scale" style="--d: 1;">
             <img src="../assets/img/project-1.png" alt="Diagram arsitektur teknis Sistem Informasi Desa, Portal PMII, dan Informia.id" width="960" height="600">
             <figcaption class="project-gallery-caption">Diagram Arsitektur Sistem: Alur request multi-aplikasi dari klien web dan mobile menuju Controller Laravel, Service Layer, RBAC Spatie Permission, hingga basis data relasional.</figcaption>
           </figure>
         </div>
       </section>
 
-      <nav class="project-pager" aria-label="Navigasi antar project">
+      <nav class="project-pager" data-reveal aria-label="Navigasi antar project">
         <a href="project-3.html" class="btn-pill btn-pill--outline">Sebelumnya: Creative Tech &amp; NARAFEST</a>
         <a href="../index.html#projects" class="btn-pill btn-pill--outline">Semua Project</a>
         <a href="project-2.html" class="btn-pill btn-pill--blue">Berikutnya: Aplikasi Mobile Flutter</a>
@@ -225,6 +231,7 @@
 
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
+  <script src="../js/motion.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

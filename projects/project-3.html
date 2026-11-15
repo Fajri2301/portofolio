@@ -15,6 +15,10 @@
         theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
       document.documentElement.setAttribute("data-theme", theme);
+      /* Animasi intro hanya aktif bila pengguna tidak memilih "kurangi gerakan". */
+      if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        document.documentElement.classList.add("motion-ok");
+      }
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +28,11 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/motion.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-bar">
@@ -145,21 +151,21 @@
       </header>
 
       <section class="project-case-grid" aria-label="Problem, Solution, Features, dan Outcome">
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 0;">
           <h2 class="project-case-title">Problem (Tantangan)</h2>
           <p class="project-case-text">
             Komunitas wirausaha muda pada <strong>Creathink Fest Preneur</strong> membutuhkan platform digital yang menggabungkan identitas brand (maskot 3D &amp; visual acara) dengan sistem keanggotaan alumni dan etalase startup. Sementara pada ritel karangan bunga, pelanggan sering kesulitan memilih buket sesuai anggaran dan acara tanpa bantuan layanan pelanggan 24 jam.
           </p>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 1;">
           <h2 class="project-case-title">Solution (Solusi Kreatif &amp; Teknis)</h2>
           <p class="project-case-text">
             Merancang arsitektur <strong>Creathink Fest Preneur</strong> dengan Laravel 12, PHP 8.4, dan panel admin <strong>Filament v3</strong> untuk mengelola pendaftaran member, verifikasi alumni, dan direktori bisnis. Untuk ritel florist, dibangun <strong>FloraBot</strong> menggunakan <code>OpenRouterService</code> (model <code>nex-agi/nex-n2-pro</code>) dan <strong>Laravel Echo / Pusher WebSocket</strong> lengkap dengan fitur ambil alih obrolan langsung oleh admin (<em>Live Chat Interception</em>).
           </p>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 0;">
           <h2 class="project-case-title">Features &amp; Scope (Ruang Lingkup Karya)</h2>
           <ul class="project-feature-list">
             <li><strong>Creathink Fest Preneur:</strong> Sistem identitas visual, maskot 3D, portal publik, verifikasi keanggotaan &amp; alumni, manajemen event kewirausahaan, serta etalase portofolio bisnis alumni.</li>
@@ -169,7 +175,7 @@
           </ul>
         </article>
 
-        <article class="project-case-box">
+        <article class="project-case-box" data-reveal style="--d: 1;">
           <h2 class="project-case-title">Outcome &amp; Reliabilitas</h2>
           <p class="project-case-text">
             Menyatukan rekayasa sistem backend, eksperimen AI terapan, dan produksi visual:
@@ -182,25 +188,25 @@
       </section>
 
       <section class="project-gallery-section" aria-labelledby="gallery-heading-3">
-        <h2 id="gallery-heading-3" class="project-gallery-heading heading-mixed">
+        <h2 id="gallery-heading-3" class="project-gallery-heading heading-mixed" data-scroll-x="40">
           <span class="display-bold">PROJECT</span>
           <span class="serif-italic">gallery &amp; brand assets</span>
         </h2>
 
         <div class="project-gallery-grid">
-          <figure class="project-gallery-item">
+          <figure class="project-gallery-item" data-reveal="scale" style="--d: 0;">
             <img src="../assets/img/project-3-real.png" alt="Visual identitas Creathink Fest Preneur, maskot 3D, dan katalog produk TokoBunga FloraBot AI" width="960" height="600">
             <figcaption class="project-gallery-caption">Aset Visual &amp; Produk Asli: Identitas resmi dan maskot 3D Creathink Fest Preneur (Laravel 12 + Filament v3) beserta aset katalog visual TokoBunga yang terintegrasi dengan FloraBot AI.</figcaption>
           </figure>
 
-          <figure class="project-gallery-item">
+          <figure class="project-gallery-item" data-reveal="scale" style="--d: 1;">
             <img src="../assets/img/project-3.png" alt="Diagram alur kerja Creative Technology, AI Pipeline, dan Produksi Dokumenter" width="960" height="600">
             <figcaption class="project-gallery-caption">Diagram Pipeline Kreatif &amp; AI: Pemetaan alur kerja dari eksplorasi Python AI dan WebSocket menuju produksi visual festival, animasi terprogram, dan riset dokumenter lapangan.</figcaption>
           </figure>
         </div>
       </section>
 
-      <nav class="project-pager" aria-label="Navigasi antar project">
+      <nav class="project-pager" data-reveal aria-label="Navigasi antar project">
         <a href="project-2.html" class="btn-pill btn-pill--outline">Sebelumnya: Aplikasi Mobile Flutter</a>
         <a href="../index.html#projects" class="btn-pill btn-pill--outline">Semua Project</a>
         <a href="project-1.html" class="btn-pill btn-pill--blue">Berikutnya: Sistem Informasi Desa &amp; Web</a>
@@ -224,6 +230,7 @@
 
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
+  <script src="../js/motion.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,629 @@
+/* =========================================================
+   Motion & 3D layer
+   - .motion-ok    : dipasang skrip inline <head> (animasi intro tanpa menunggu JS)
+   - .motion-ready : dipasang js/motion.js (state tersembunyi untuk reveal saat scroll)
+   Keduanya tidak dipasang bila pengguna memilih prefers-reduced-motion.
+   ========================================================= */
+
+:root {
+  --mx: 0;
+  --my: 0;
+  --hp: 0;
+  --grid-line: rgba(43, 59, 255, 0.3);
+}
+
+[data-theme="dark"] {
+  --grid-line: rgba(108, 123, 255, 0.38);
+}
+
+/* ---------- Progress bar scroll ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  height: 3px;
+  background-color: var(--color-primary-solid);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* ---------- Hero: lantai grid perspektif ----------
+   Wrapper memegang mask (2D), bidang di dalamnya yang dirotasi 3D.
+   Mask dan transform 3D sengaja dipisah: digabung di satu elemen, beberapa browser tidak merendernya. */
+.hero-floor {
+  position: absolute;
+  top: 34%;
+  left: -20%;
+  right: -20%;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 480px;
+  perspective-origin: 50% 0%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+}
+
+.hero-floor-plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 260%;
+  overflow: hidden;
+  transform: rotateX(60deg);
+  transform-origin: 50% 0%;
+}
+
+.hero-floor-grid {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 2px, transparent 2px),
+    linear-gradient(90deg, var(--grid-line) 2px, transparent 2px);
+  background-size: 80px 80px;
+}
+
+.motion-ok .hero-floor-grid {
+  animation: floor-scroll 2.8s linear infinite;
+}
+
+@keyframes floor-scroll {
+  to {
+    transform: translateY(80px);
+  }
+}
+
+/* ---------- Hero: parallax kursor + scroll ---------- */
+.hero-backdrop-text {
+  perspective: 800px;
+  translate: calc(var(--mx) * 14px) calc(var(--hp) * -110px);
+  opacity: calc(1 - var(--hp) * 1.15);
+}
+
+.hero-figure-wrap {
+  translate: calc(var(--mx) * -8px) calc(var(--hp) * 70px);
+  transform: perspective(1100px) rotateY(calc(var(--mx) * 7deg)) rotateX(calc(var(--my) * -4deg));
+}
+
+/* Chip teknologi yang melayang di sekitar potret (desktop) */
+.hero-chips {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.hero-chip {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  translate:
+    calc(var(--mx) * var(--depth) * 1px)
+    calc(var(--my) * var(--depth) * 1px + var(--hp) * var(--depth) * -5px);
+}
+
+.hero-chip-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.05rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 16px 34px rgba(17, 17, 40, 0.12);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-chip-inner::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary-solid);
+  flex-shrink: 0;
+}
+
+.hero-chip--serif .hero-chip-inner {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hero-chip--blue .hero-chip-inner {
+  background-color: var(--color-primary-solid);
+  border-color: var(--color-primary-solid);
+  color: var(--color-white);
+}
+
+.hero-chip--blue .hero-chip-inner::before {
+  background-color: var(--color-white);
+}
+
+@media (min-width: 900px) {
+  .hero-chips {
+    display: block;
+  }
+}
+
+.motion-ok .hero-chip {
+  animation: chip-pop 0.9s var(--ease-smooth) backwards;
+  animation-delay: var(--delay, 0.6s);
+}
+
+.motion-ok .hero-chip-inner {
+  animation: chip-float var(--float, 6s) ease-in-out infinite alternate;
+}
+
+@keyframes chip-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+
+@keyframes chip-float {
+  from {
+    transform: translateY(-7px) rotate(-2deg);
+  }
+  to {
+    transform: translateY(8px) rotate(2deg);
+  }
+}
+
+/* ---------- Hero: animasi intro saat halaman dibuka ---------- */
+.motion-ok .hero-serif-row,
+.motion-ok .hero-giant-word {
+  animation: hero-rise 1.1s var(--ease-smooth) backwards;
+}
+
+.motion-ok .hero-giant-word {
+  animation-delay: 0.12s;
+}
+
+.motion-ok .hero-cutout-img {
+  animation: portrait-in 1.2s var(--ease-smooth) 0.2s backwards;
+}
+
+.motion-ok .hero-cta-layer .btn-pill,
+.motion-ok .hero-captions-bar > * {
+  animation: fade-up 0.8s var(--ease-smooth) 0.65s backwards;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(55%) rotateX(-45deg);
+  }
+}
+
+@keyframes portrait-in {
+  from {
+    opacity: 0;
+    transform: translateY(90px) scale(0.92);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+/* ---------- Pita marquee teknologi (dua pita menyilang) ---------- */
+.marquee-band {
+  position: relative;
+  overflow: hidden;
+  padding-block: 3.25rem;
+  background-color: var(--color-bg);
+}
+
+.marquee {
+  display: flex;
+  margin-inline: -6%;
+  padding-block: 0.95rem;
+  overflow: hidden;
+}
+
+.marquee--ink {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  rotate: -2.5deg;
+}
+
+.marquee--blue {
+  margin-top: -1.1rem;
+  background-color: var(--color-primary-solid);
+  color: var(--color-white);
+  rotate: 2deg;
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2.25rem;
+  padding-right: 2.25rem;
+  margin: 0;
+  list-style: none;
+  animation: marquee-run 42s linear infinite;
+}
+
+.marquee--blue .marquee-track {
+  animation-direction: reverse;
+  animation-duration: 48s;
+}
+
+.marquee-item {
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.marquee-item.serif-italic {
+  font-size: clamp(1.6rem, 3.4vw, 2.7rem);
+}
+
+.marquee-sep {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-run {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ---------- Statistik ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 170px;
+  padding: 1.5rem;
+  background-color: var(--color-bg);
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+}
+
+.stat-card--accent {
+  background-color: var(--color-primary-solid);
+  border-color: var(--color-primary-solid);
+  color: var(--color-white);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+}
+
+.stat-card--accent .stat-num {
+  color: var(--color-white);
+}
+
+.stat-label {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Section proses: daftar biasa, berubah jadi cincin 3D di desktop ---------- */
+.process-section {
+  background-color: var(--color-bg);
+  padding-block: 4.5rem;
+}
+
+.process-sticky {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.process-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35em;
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(2.35rem, 6vw, 4.5rem);
+}
+
+.process-heading .display-bold {
+  color: var(--color-primary);
+}
+
+.process-heading .serif-italic {
+  font-size: 1.12em;
+}
+
+.process-lead {
+  margin: 0;
+  max-width: 40ch;
+  color: var(--color-text-muted);
+}
+
+.process-meter {
+  display: none;
+}
+
+.process-ring {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+}
+
+.process-num {
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+}
+
+.process-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.process-title .serif-italic {
+  font-size: 1.15em;
+}
+
+.process-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .process-ring {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mode 3D: section setinggi 380vh, isi menempel (sticky) dan cincin kartu berputar mengikuti scroll */
+.process-section.is-3d {
+  height: 380vh;
+  padding-block: 0;
+}
+
+.process-section.is-3d .process-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  overflow: hidden;
+}
+
+.process-section.is-3d .process-meter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.process-meter b {
+  font-size: 2.2rem;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.process-meter-bar {
+  position: relative;
+  flex: 1;
+  max-width: 220px;
+  height: 3px;
+  background-color: var(--color-border-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.process-meter-bar i {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-primary-solid);
+  transform: scaleX(var(--pp, 0));
+  transform-origin: 0 50%;
+}
+
+.process-section.is-3d .process-stage {
+  position: relative;
+  height: 460px;
+  perspective: 1500px;
+}
+
+.process-section.is-3d .process-ring {
+  display: block;
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(-340px) rotateY(calc(var(--pp, 0) * -300deg));
+}
+
+.process-section.is-3d .process-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 360px;
+  margin: -180px 0 0 -150px;
+  transform: rotateY(calc(var(--i) * 60deg)) translateZ(340px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 24px 50px rgba(17, 17, 40, 0.12);
+  transition: background-color 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
+}
+
+.process-section.is-3d .process-card.is-active {
+  background-color: var(--color-primary-solid);
+  border-color: var(--color-primary-solid);
+  color: var(--color-white);
+}
+
+.process-section.is-3d .process-card.is-active .process-num,
+.process-section.is-3d .process-card.is-active .process-text {
+  color: var(--color-white);
+}
+
+/* ---------- Pill skill jatuh bertumpuk (3D) ---------- */
+.skills-pile {
+  perspective: 900px;
+}
+
+.skill-pill {
+  transition: transform 240ms var(--ease-smooth), box-shadow 240ms var(--ease-smooth), opacity 0.5s var(--ease-smooth);
+}
+
+.motion-ready .skills-pile:not(.is-in) .skill-pill {
+  opacity: 0;
+  transform: translateY(-160px) rotate(var(--tag-angle)) rotateX(75deg);
+}
+
+.motion-ready .skills-pile.is-entering .skill-pill {
+  transition: transform 0.95s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease-out;
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* ---------- Kartu project: tilt 3D + glare ---------- */
+.project-card-shell {
+  display: flex;
+}
+
+.project-card-shell > .project-card {
+  flex: 1;
+}
+
+.project-card {
+  position: relative;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(255, 255, 255, 0.28), transparent 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-smooth);
+}
+
+.project-card.is-tilting {
+  transition: transform 90ms linear, border-color 240ms var(--ease-smooth);
+}
+
+.project-card.is-tilting::after {
+  opacity: 1;
+}
+
+/* ---------- Reveal saat scroll ---------- */
+.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: perspective(900px) translateY(52px) rotateX(16deg);
+  transition:
+    opacity 0.8s var(--ease-smooth),
+    transform 1s var(--ease-smooth);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+
+.motion-ready [data-reveal="left"] {
+  transform: perspective(900px) translateX(-60px) rotateY(14deg);
+}
+
+.motion-ready [data-reveal="scale"] {
+  transform: perspective(900px) scale(0.86) rotateX(10deg);
+}
+
+.motion-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Halaman studi kasus: intro hero ---------- */
+.motion-ok .project-back-row,
+.motion-ok .project-hero > * {
+  animation: fade-up 0.8s var(--ease-smooth) backwards;
+}
+
+.motion-ok .project-hero > :nth-child(2) { animation-delay: 0.08s; }
+.motion-ok .project-hero > :nth-child(3) { animation-delay: 0.16s; }
+.motion-ok .project-hero > :nth-child(4) { animation-delay: 0.24s; }
+.motion-ok .project-hero > :nth-child(5) { animation-delay: 0.32s; }
+
+/* Di mode 3D, posisi kartu proses dikendalikan cincin; matikan efek reveal agar transform tidak tertimpa. */
+.motion-ready .process-section.is-3d .process-card[data-reveal] {
+  opacity: 1;
+  transform: rotateY(calc(var(--i) * 60deg)) translateZ(340px);
+  transition: background-color 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
+  transition-delay: 0s;
+}

@@ -11,6 +11,9 @@
     if (window.PortfolioTags && typeof window.PortfolioTags.init === "function") {
       window.PortfolioTags.init();
     }
+    if (window.PortfolioMotion && typeof window.PortfolioMotion.init === "function") {
+      window.PortfolioMotion.init();
+    }
   }
 
   if (document.readyState === "loading") {

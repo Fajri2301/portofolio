@@ -13,12 +13,14 @@ portofolio/
 │   ├── base.css
 │   ├── layout.css
 │   ├── components.css
-│   └── project.css
+│   ├── project.css
+│   └── motion.css      # animasi intro, reveal scroll, efek 3D (aktif hanya jika tidak reduced-motion)
 ├── js/
-│   ├── main.js
+│   ├── main.js         # titik masuk, memanggil init setiap modul
 │   ├── theme.js
 │   ├── menu.js
-│   └── tags.js
+│   ├── tags.js
+│   └── motion.js       # progress bar, parallax hero, cincin proses 3D, tilt kartu, counter
 ├── projects/
 │   ├── project-1.html
 │   ├── project-2.html

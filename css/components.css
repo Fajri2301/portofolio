@@ -330,7 +330,7 @@
 
 .project-card:hover,
 .project-card:focus-visible {
-  transform: translateY(-4px);
+  --lift: -6px;
   border-color: var(--color-primary);
 }
 

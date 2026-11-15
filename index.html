@@ -15,6 +15,10 @@
         theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
       document.documentElement.setAttribute("data-theme", theme);
+      /* Animasi intro hanya aktif bila pengguna tidak memilih "kurangi gerakan". */
+      if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        document.documentElement.classList.add("motion-ok");
+      }
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +27,11 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/motion.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- Header: Logo kiri, Pill "Change the Mode" tengah, Hamburger kanan -->
   <header class="site-header">
@@ -103,6 +109,17 @@
     <section id="hero" class="hero-section" aria-label="Perkenalan Fajri Khaerullah">
       <div class="container">
         <div class="hero-stage">
+          <!-- Layer 0: Lantai grid perspektif 3D yang bergerak -->
+          <div class="hero-floor" aria-hidden="true"><div class="hero-floor-plane"><div class="hero-floor-grid"></div></div></div>
+
+          <!-- Chip teknologi melayang (desktop), bergerak mengikuti kursor dan scroll -->
+          <ul class="hero-chips" aria-hidden="true">
+            <li class="hero-chip " style="--x: 4%; --y: 44%; --depth: 26; --float: 6.5s; --delay: 0.75s;"><span class="hero-chip-inner">Laravel 13</span></li>
+            <li class="hero-chip hero-chip--serif" style="--x: 78%; --y: 45%; --depth: 34; --float: 7.2s; --delay: 0.85s;"><span class="hero-chip-inner">Flutter &amp; Dart</span></li>
+            <li class="hero-chip hero-chip--blue" style="--x: 10%; --y: 63%; --depth: 18; --float: 5.6s; --delay: 0.95s;"><span class="hero-chip-inner">Go REST API</span></li>
+            <li class="hero-chip " style="--x: 76%; --y: 65%; --depth: 22; --float: 6.1s; --delay: 1.05s;"><span class="hero-chip-inner">Filament v3</span></li>
+          </ul>
+
           <!-- Layer 1 (z-index: 1): Teks campuran di belakang subjek foto -->
           <h1 class="hero-backdrop-text heading-mixed">
             <span class="hero-serif-row">
@@ -148,11 +165,73 @@
       </div>
     </section>
 
+    <!-- Pita marquee teknologi yang menyilang -->
+    <section class="marquee-band" aria-label="Teknologi dan ranah kerja">
+      <div class="marquee marquee--ink" data-scroll-x="-90">
+        <ul class="marquee-track">
+          <li class="marquee-item display-bold">Laravel</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Flutter</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Livewire</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Filament</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Go</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Dart</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">MariaDB</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Redis</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Tailwind CSS</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Alpine.js</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Sanctum</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">PHPUnit</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Remotion</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Ubuntu</li><li class="marquee-sep" aria-hidden="true"></li>
+        </ul>
+        <ul class="marquee-track" aria-hidden="true">
+          <li class="marquee-item display-bold">Laravel</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Flutter</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Livewire</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Filament</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Go</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Dart</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">MariaDB</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Redis</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Tailwind CSS</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Alpine.js</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Sanctum</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">PHPUnit</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Remotion</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Ubuntu</li><li class="marquee-sep" aria-hidden="true"></li>
+        </ul>
+      </div>
+      <div class="marquee marquee--blue" data-scroll-x="90" aria-hidden="true">
+        <ul class="marquee-track" aria-hidden="true">
+          <li class="marquee-item display-bold">Web Development</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Mobile Apps</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Creative Tech</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">AI Production</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Branding</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Motion Graphics</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Research</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Documentary</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Digital Campaign</li><li class="marquee-sep" aria-hidden="true"></li>
+        </ul>
+        <ul class="marquee-track" aria-hidden="true">
+          <li class="marquee-item display-bold">Web Development</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Mobile Apps</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Creative Tech</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">AI Production</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Branding</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Motion Graphics</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Research</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item serif-italic">Documentary</li><li class="marquee-sep" aria-hidden="true"></li>
+          <li class="marquee-item display-bold">Digital Campaign</li><li class="marquee-sep" aria-hidden="true"></li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Section 2: Latar biru penuh "ALL YOUR skills" + tumpukan tag pill putih -->
     <section id="skills" class="skills-section" aria-labelledby="skills-title">
       <div class="container">
         <div class="skills-top-grid">
-          <h2 id="skills-title" class="skills-heading heading-mixed">
+          <h2 id="skills-title" class="skills-heading heading-mixed" data-scroll-x="60">
             <span class="display-bold">ALL MY</span>
             <span class="serif-italic">skills</span>
           </h2>
@@ -196,24 +275,44 @@
           </div>
 
           <div class="about-narrative">
-            <p>
+            <p data-reveal style="--d: 0;">
               Saya adalah seorang <strong>Full-Stack Developer dan Creative Technologist</strong> yang memiliki ketertarikan pada pengembangan teknologi digital, rekayasa perangkat lunak, desain, serta komunikasi kreatif.
             </p>
-            <p>
+            <p data-reveal style="--d: 1;">
               Saya memiliki pengalaman dalam membangun berbagai solusi digital, mulai dari sistem informasi berbasis web menggunakan Laravel, pengembangan aplikasi mobile menggunakan Flutter, hingga eksplorasi teknologi multimedia dan animasi berbasis AI.
             </p>
-            <p>
+            <p data-reveal style="--d: 2;">
               Dalam proses pengembangan, saya terbiasa bekerja mulai dari perancangan ide, analisis kebutuhan, penyusunan arsitektur sistem, pengembangan fitur, pengelolaan database, hingga implementasi dan penyempurnaan produk. Di luar pengembangan perangkat lunak, saya juga aktif mengeksplorasi desain visual, branding, produksi multimedia, riset, dan kampanye digital yang berkaitan dengan isu sosial, lingkungan, dan kebudayaan.
             </p>
-            <p>
+            <p data-reveal style="--d: 3;">
               Bagi saya, teknologi bukan sekadar tentang menulis kode, tetapi tentang bagaimana membangun solusi, menciptakan pengalaman, dan menghadirkan dampak melalui inovasi.
             </p>
           </div>
         </div>
 
+        <!-- Angka ringkas yang dihitung naik saat terlihat -->
+        <div class="stats-grid">
+          <div class="stat-card stat-card--accent" data-reveal="scale" style="--d: 0;">
+            <span class="stat-num" data-count="16" aria-hidden="true">16</span>
+            <span class="stat-label"><span class="sr-only">16 </span>Proyek di arsip portofolio</span>
+          </div>
+          <div class="stat-card" data-reveal="scale" style="--d: 1;">
+            <span class="stat-num" data-count="5" aria-hidden="true">5</span>
+            <span class="stat-label"><span class="sr-only">5 </span>Domain produksi yang sudah dideploy</span>
+          </div>
+          <div class="stat-card" data-reveal="scale" style="--d: 2;">
+            <span class="stat-num" data-count="25" aria-hidden="true">25</span>
+            <span class="stat-label"><span class="sr-only">25 </span>Repositori publik di GitHub</span>
+          </div>
+          <div class="stat-card" data-reveal="scale" style="--d: 3;">
+            <span class="stat-num" data-count="3" aria-hidden="true">3</span>
+            <span class="stat-label"><span class="sr-only">3 </span>Ranah proyek: engineering, creative, riset</span>
+          </div>
+        </div>
+
         <!-- Lima Pilar Keahlian -->
         <div class="pillars-grid" aria-label="Lima pilar keahlian utama">
-          <article class="pillar-card">
+          <article class="pillar-card" data-reveal style="--d: 0;">
             <span class="pillar-num">PILAR 01 / ENGINEERING</span>
             <h3 class="pillar-title">Software Engineering</h3>
             <ul class="pillar-list">
@@ -224,7 +323,7 @@
             </ul>
           </article>
 
-          <article class="pillar-card">
+          <article class="pillar-card" data-reveal style="--d: 1;">
             <span class="pillar-num">PILAR 02 / MOBILE</span>
             <h3 class="pillar-title">Mobile Application Development</h3>
             <ul class="pillar-list">
@@ -235,7 +334,7 @@
             </ul>
           </article>
 
-          <article class="pillar-card">
+          <article class="pillar-card" data-reveal style="--d: 2;">
             <span class="pillar-num">PILAR 03 / CREATIVE TECH</span>
             <h3 class="pillar-title">Creative Technology &amp; Design</h3>
             <ul class="pillar-list">
@@ -246,7 +345,7 @@
             </ul>
           </article>
 
-          <article class="pillar-card">
+          <article class="pillar-card" data-reveal style="--d: 3;">
             <span class="pillar-num">PILAR 04 &amp; 05 / CAMPAIGN &amp; RESEARCH</span>
             <h3 class="pillar-title">Digital Campaign, Research &amp; Multimedia</h3>
             <ul class="pillar-list">
@@ -260,11 +359,63 @@
       </div>
     </section>
 
+    <!-- Section Proses: daftar biasa di mobile, cincin kartu 3D yang berputar saat scroll di desktop -->
+    <section id="process" class="process-section" aria-labelledby="process-title">
+      <div class="container process-sticky">
+        <div class="process-intro">
+          <span class="project-card-meta">WORKFLOW / 6 TAHAP</span>
+          <h2 id="process-title" class="process-heading heading-mixed">
+            <span class="display-bold">HOW I</span>
+            <span class="serif-italic">work</span>
+          </h2>
+          <p class="process-lead">Alur kerja dari ide sampai rilis yang saya pakai di proyek nyata seperti SISUKA, Informia.id, dan SiPRANA.</p>
+          <div class="process-meter" aria-hidden="true">
+            <span><b data-process-current>01</b> / 06</span>
+            <span class="process-meter-bar"><i></i></span>
+          </div>
+        </div>
+        <div class="process-stage">
+          <ol class="process-ring">
+          <li class="process-card" style="--i: 0;" data-reveal>
+            <span class="process-num">01</span>
+            <h3 class="process-title">Ide &amp; <span class="serif-italic">perancangan</span></h3>
+            <p class="process-text">Merumuskan masalah nyata bersama pengguna atau mitra, lalu menggambar bentuk solusi paling sederhana yang bisa dipakai.</p>
+          </li>
+          <li class="process-card" style="--i: 1;" data-reveal>
+            <span class="process-num">02</span>
+            <h3 class="process-title">Analisis <span class="serif-italic">kebutuhan</span></h3>
+            <p class="process-text">Memetakan peran pengguna, alur kerja, dan aturan bisnis, misalnya hierarki Dusun, RW, dan RT pada SISUKA.</p>
+          </li>
+          <li class="process-card" style="--i: 2;" data-reveal>
+            <span class="process-num">03</span>
+            <h3 class="process-title">Arsitektur <span class="serif-italic">sistem</span></h3>
+            <p class="process-text">Menyusun lapisan Controller, Service, dan RBAC Spatie Permission agar modul mudah dikembangkan dan aman.</p>
+          </li>
+          <li class="process-card" style="--i: 3;" data-reveal>
+            <span class="process-num">04</span>
+            <h3 class="process-title">Pengembangan <span class="serif-italic">fitur</span></h3>
+            <p class="process-text">Membangun fitur dengan Laravel, Livewire, Filament, dan Flutter, dari panel admin sampai aplikasi mobile.</p>
+          </li>
+          <li class="process-card" style="--i: 4;" data-reveal>
+            <span class="process-num">05</span>
+            <h3 class="process-title">Database &amp; <span class="serif-italic">data</span></h3>
+            <p class="process-text">Skema relasional MySQL/MariaDB, transaksi kas aman dengan lockForUpdate(), dan log audit pada audit_logs.</p>
+          </li>
+          <li class="process-card" style="--i: 5;" data-reveal>
+            <span class="process-num">06</span>
+            <h3 class="process-title">Uji, rilis &amp; <span class="serif-italic">iterasi</span></h3>
+            <p class="process-text">PHPUnit dan CI GitHub Actions sebelum rilis ke domain produksi, lalu penyempurnaan dari masukan pengguna.</p>
+          </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 3: "SELECTED projects" dengan 3 kartu project yang menaut ke halaman masing-masing -->
     <section id="projects" class="projects-section" aria-labelledby="projects-title">
       <div class="container">
         <div class="projects-header">
-          <h2 id="projects-title" class="projects-heading heading-mixed">
+          <h2 id="projects-title" class="projects-heading heading-mixed" data-scroll-x="-60">
             <span class="display-bold">SELECTED</span>
             <span class="serif-italic">projects</span>
           </h2>
@@ -275,73 +426,79 @@
 
         <div class="projects-grid">
           <!-- Kartu Project 1 -->
-          <a href="projects/project-1.html" class="project-card">
-            <div class="project-card-thumb">
-              <img
-                src="assets/img/project-1-real.png"
-                alt="Tangkapan layar asli SISUKA Desa Sukasari, Portal Berita Informia.id, dan Kartu Anggota PMII"
-                width="960"
-                height="600"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card-body">
-              <div>
-                <span class="project-card-meta">01 / LARAVEL 12-13 &amp; ENTERPRISE WEB</span>
-                <h3 class="project-card-title">SISUKA &amp; SIDESA, Informia.id, LT-II Pramuka &amp; Portal PMII</h3>
-                <p class="project-card-desc">
-                  Sistem informasi publik berbasis Laravel 12/13, Livewire 3, dan MariaDB: administrasi kependudukan &amp; APBDes desa (SISUKA &amp; SIDESA), Newsroom CMS (Informia.id), penilaian penjurian LT-II Kwarran Gunung Kaler, serta sistem kaderisasi PMII.
-                </p>
+          <div class="project-card-shell" data-reveal style="--d: 0;">
+            <a href="projects/project-1.html" class="project-card" data-tilt>
+              <div class="project-card-thumb">
+                <img
+                  src="assets/img/project-1-real.png"
+                  alt="Tangkapan layar asli SISUKA Desa Sukasari, Portal Berita Informia.id, dan Kartu Anggota PMII"
+                  width="960"
+                  height="600"
+                  loading="lazy"
+                >
               </div>
-              <span class="project-card-cta">Baca Studi Kasus (01)</span>
-            </div>
-          </a>
+              <div class="project-card-body">
+                <div>
+                  <span class="project-card-meta">01 / LARAVEL 12-13 &amp; ENTERPRISE WEB</span>
+                  <h3 class="project-card-title">SISUKA &amp; SIDESA, Informia.id, LT-II Pramuka &amp; Portal PMII</h3>
+                  <p class="project-card-desc">
+                    Sistem informasi publik berbasis Laravel 12/13, Livewire 3, dan MariaDB: administrasi kependudukan &amp; APBDes desa (SISUKA &amp; SIDESA), Newsroom CMS (Informia.id), penilaian penjurian LT-II Kwarran Gunung Kaler, serta sistem kaderisasi PMII.
+                  </p>
+                </div>
+                <span class="project-card-cta">Baca Studi Kasus (01)</span>
+              </div>
+            </a>
+          </div>
 
           <!-- Kartu Project 2 -->
-          <a href="projects/project-2.html" class="project-card">
-            <div class="project-card-thumb">
-              <img
-                src="assets/img/project-2-real.png"
-                alt="Tangkapan layar aplikasi Flutter SiPRANA Kwarran dan Sukasari Mobile"
-                width="960"
-                height="600"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card-body">
-              <div>
-                <span class="project-card-meta">02 / FLUTTER MOBILE &amp; GO REST API</span>
-                <h3 class="project-card-title">Sukasari Mobile, SiPRANA Pramuka, Danantara &amp; Toko Emas</h3>
-                <p class="project-card-desc">
-                  Ekosistem aplikasi mobile Flutter 3.44 (Dart 3.12) terintegrasi Sanctum Bearer &amp; Go REST API: layanan cek NIK dan pengajuan RT warga Desa Sukasari, KTA digital &amp; poin keaktifan SiPRANA, serta dompet digital Danantara &amp; Toko Emas.
-                </p>
+          <div class="project-card-shell" data-reveal style="--d: 1;">
+            <a href="projects/project-2.html" class="project-card" data-tilt>
+              <div class="project-card-thumb">
+                <img
+                  src="assets/img/project-2-real.png"
+                  alt="Tangkapan layar aplikasi Flutter SiPRANA Kwarran dan Sukasari Mobile"
+                  width="960"
+                  height="600"
+                  loading="lazy"
+                >
               </div>
-              <span class="project-card-cta">Baca Studi Kasus (02)</span>
-            </div>
-          </a>
+              <div class="project-card-body">
+                <div>
+                  <span class="project-card-meta">02 / FLUTTER MOBILE &amp; GO REST API</span>
+                  <h3 class="project-card-title">Sukasari Mobile, SiPRANA Pramuka, Danantara &amp; Toko Emas</h3>
+                  <p class="project-card-desc">
+                    Ekosistem aplikasi mobile Flutter 3.44 (Dart 3.12) terintegrasi Sanctum Bearer &amp; Go REST API: layanan cek NIK dan pengajuan RT warga Desa Sukasari, KTA digital &amp; poin keaktifan SiPRANA, serta dompet digital Danantara &amp; Toko Emas.
+                  </p>
+                </div>
+                <span class="project-card-cta">Baca Studi Kasus (02)</span>
+              </div>
+            </a>
+          </div>
 
           <!-- Kartu Project 3 -->
-          <a href="projects/project-3.html" class="project-card">
-            <div class="project-card-thumb">
-              <img
-                src="assets/img/project-3-real.png"
-                alt="Visual identitas Creathink Fest Preneur, maskot 3D, dan katalog TokoBunga FloraBot AI"
-                width="960"
-                height="600"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card-body">
-              <div>
-                <span class="project-card-meta">03 / CREATIVE TECH, AI &amp; BRANDING</span>
-                <h3 class="project-card-title">Creathink Fest Preneur, FloraBot AI, NARAFEST &amp; Dokumenter</h3>
-                <p class="project-card-desc">
-                  Platform ekosistem wirausaha berbasis Laravel 12 &amp; Filament v3 (Creathink Fest Preneur), E-Commerce dengan chatbot NLP OpenRouter &amp; WebSocket (FloraBot), riset EduFocus AI &amp; SPK TOPSIS, hingga produksi dokumenter Arca dan Tapak.
-                </p>
+          <div class="project-card-shell" data-reveal style="--d: 2;">
+            <a href="projects/project-3.html" class="project-card" data-tilt>
+              <div class="project-card-thumb">
+                <img
+                  src="assets/img/project-3-real.png"
+                  alt="Visual identitas Creathink Fest Preneur, maskot 3D, dan katalog TokoBunga FloraBot AI"
+                  width="960"
+                  height="600"
+                  loading="lazy"
+                >
               </div>
-              <span class="project-card-cta">Baca Studi Kasus (03)</span>
-            </div>
-          </a>
+              <div class="project-card-body">
+                <div>
+                  <span class="project-card-meta">03 / CREATIVE TECH, AI &amp; BRANDING</span>
+                  <h3 class="project-card-title">Creathink Fest Preneur, FloraBot AI, NARAFEST &amp; Dokumenter</h3>
+                  <p class="project-card-desc">
+                    Platform ekosistem wirausaha berbasis Laravel 12 &amp; Filament v3 (Creathink Fest Preneur), E-Commerce dengan chatbot NLP OpenRouter &amp; WebSocket (FloraBot), riset EduFocus AI &amp; SPK TOPSIS, hingga produksi dokumenter Arca dan Tapak.
+                  </p>
+                </div>
+                <span class="project-card-cta">Baca Studi Kasus (03)</span>
+              </div>
+            </a>
+          </div>
         </div>
 
         <!-- Inventaris Lengkap 3 Kategori Besar Proyek -->
@@ -350,7 +507,7 @@
           <h3 class="pillar-title">Arsip Proyek Berdasarkan Ranah Keahlian</h3>
 
           <div class="inventory-grid">
-            <div class="inventory-card">
+            <div class="inventory-card" data-reveal style="--d: 0;">
               <span class="pillar-num">A. SOFTWARE ENGINEERING</span>
               <h4 class="pillar-title">Web &amp; Mobile Platforms</h4>
               <ul class="pillar-list">
@@ -364,7 +521,7 @@
               </ul>
             </div>
 
-            <div class="inventory-card">
+            <div class="inventory-card" data-reveal style="--d: 1;">
               <span class="pillar-num">B. CREATIVE TECHNOLOGY</span>
               <h4 class="pillar-title">Branding, AI &amp; Multimedia</h4>
               <ul class="pillar-list">
@@ -376,7 +533,7 @@
               </ul>
             </div>
 
-            <div class="inventory-card">
+            <div class="inventory-card" data-reveal style="--d: 2;">
               <span class="pillar-num">C. RESEARCH &amp; CAMPAIGN</span>
               <h4 class="pillar-title">Digital Communication</h4>
               <ul class="pillar-list">
@@ -389,7 +546,7 @@
           </div>
 
           <!-- Catatan Transparansi Repositori & Dokumentasi -->
-          <div class="doc-reminder-card" role="note" aria-label="Catatan status repositori dan domain proyek">
+          <div class="doc-reminder-card" data-reveal role="note" aria-label="Catatan status repositori dan domain proyek">
             <h4 class="doc-reminder-title">Domain Produksi, Status Repositori &amp; Dokumentasi Proyek</h4>
             <p class="doc-reminder-text">
               Portofolio ini merangkum proyek yang telah dideploy pada domain produksi (<a href="https://sukasari.id" target="_blank" rel="noopener noreferrer">sukasari.id</a>, <a href="https://desakudigital.online" target="_blank" rel="noopener noreferrer">desakudigital.online</a>, <a href="https://informia.id" target="_blank" rel="noopener noreferrer">informia.id</a>, <a href="https://creathinkfestpreneur.com" target="_blank" rel="noopener noreferrer">creathinkfestpreneur.com</a>, dan <a href="https://zankidausatflower.com" target="_blank" rel="noopener noreferrer">zankidausatflower.com</a>) beserta 25 repositori publik di <a href="https://github.com/Fajri2301" target="_blank" rel="noopener noreferrer">github.com/Fajri2301</a>. Kode sumber untuk sistem pemerintahan desa dan instansi mitra dikelola sebagai <strong>Private Repository</strong> demi keamanan data warga.
@@ -418,6 +575,7 @@
   <script src="js/theme.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/tags.js"></script>
+  <script src="js/motion.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
