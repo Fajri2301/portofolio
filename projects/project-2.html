@@ -6,6 +6,17 @@
   <meta name="description" content="Studi kasus pengembangan Aplikasi Mobile Flutter Danantara Bank, Toko Emas Digital, dan Sistem Desa Suka Sari oleh Fajri Khaerullah.">
   <title>Danantara Bank, Toko Emas &amp; Flutter Apps | Fajri Khaerullah</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B3BFF'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-size='15' font-weight='800'%3EFK%3C/text%3E%3C/svg%3E">
+  <script>
+    /* Pasang tema sebelum render agar tidak ada kilatan putih di dark mode. Key harus sama dengan js/theme.js. */
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("fajri_portfolio_theme"); } catch (e) {}
+      if (theme !== "dark" && theme !== "light") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
@@ -54,15 +65,15 @@
           </a>
         </li>
         <li>
-          <a href="../index.html#about" class="menu-nav-link">
+          <a href="../index.html#skills" class="menu-nav-link">
             <span class="display-bold">02</span>
-            <span class="serif-italic">About &amp; Pillars</span>
+            <span class="serif-italic">Skills &amp; Stack</span>
           </a>
         </li>
         <li>
-          <a href="../index.html#skills" class="menu-nav-link">
+          <a href="../index.html#about" class="menu-nav-link">
             <span class="display-bold">03</span>
-            <span class="serif-italic">Skills &amp; Stack</span>
+            <span class="serif-italic">About &amp; Pillars</span>
           </a>
         </li>
         <li>
@@ -214,7 +225,6 @@
 
   <script src="../js/theme.js"></script>
   <script src="../js/menu.js"></script>
-  <script src="../js/tags.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

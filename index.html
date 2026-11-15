@@ -6,6 +6,17 @@
   <meta name="description" content="Portofolio pribadi Fajri Khaerullah: Full-Stack Developer &amp; Creative Technologist. Pengembangan aplikasi web Laravel, mobile Flutter, teknologi kreatif, dan komunikasi digital.">
   <title>Fajri Khaerullah | Full-Stack Developer &amp; Creative Technologist</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B3BFF'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-size='15' font-weight='800'%3EFK%3C/text%3E%3C/svg%3E">
+  <script>
+    /* Pasang tema sebelum render agar tidak ada kilatan putih di dark mode. Key harus sama dengan js/theme.js. */
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("fajri_portfolio_theme"); } catch (e) {}
+      if (theme !== "dark" && theme !== "light") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
@@ -55,15 +66,15 @@
           </a>
         </li>
         <li>
-          <a href="#about" class="menu-nav-link">
+          <a href="#skills" class="menu-nav-link">
             <span class="display-bold">02</span>
-            <span class="serif-italic">About &amp; Pillars</span>
+            <span class="serif-italic">Skills &amp; Stack</span>
           </a>
         </li>
         <li>
-          <a href="#skills" class="menu-nav-link">
+          <a href="#about" class="menu-nav-link">
             <span class="display-bold">03</span>
-            <span class="serif-italic">Skills &amp; Stack</span>
+            <span class="serif-italic">About &amp; Pillars</span>
           </a>
         </li>
         <li>
@@ -158,16 +169,16 @@
 
         <!-- Deretan tag pill putih bertulisan serif italic tersusun menumpuk -->
         <ul class="skills-pile" aria-label="Daftar keahlian dan teknologi">
-          <li class="skill-pill" tabindex="0">Laravel &amp; PHP</li>
-          <li class="skill-pill" tabindex="0">Flutter &amp; Dart</li>
-          <li class="skill-pill" tabindex="0">Livewire &amp; Filament</li>
-          <li class="skill-pill" tabindex="0">HTML, CSS &amp; JS</li>
-          <li class="skill-pill" tabindex="0">REST API &amp; SQL</li>
-          <li class="skill-pill" tabindex="0">UI/UX &amp; Branding</li>
-          <li class="skill-pill" tabindex="0">Remotion &amp; Motion</li>
-          <li class="skill-pill" tabindex="0">AI Creative Production</li>
-          <li class="skill-pill" tabindex="0">Digital Storytelling</li>
-          <li class="skill-pill" tabindex="0">C++ &amp; Ubuntu CLI</li>
+          <li class="skill-pill">Laravel &amp; PHP</li>
+          <li class="skill-pill">Flutter &amp; Dart</li>
+          <li class="skill-pill">Livewire &amp; Filament</li>
+          <li class="skill-pill">HTML, CSS &amp; JS</li>
+          <li class="skill-pill">REST API &amp; SQL</li>
+          <li class="skill-pill">UI/UX &amp; Branding</li>
+          <li class="skill-pill">Remotion &amp; Motion</li>
+          <li class="skill-pill">AI Creative Production</li>
+          <li class="skill-pill">Digital Storytelling</li>
+          <li class="skill-pill">C++ &amp; Ubuntu CLI</li>
         </ul>
       </div>
     </section>

@@ -1,22 +1,20 @@
 (function () {
   "use strict";
 
+  // Harus sama dengan key di skrip inline <head> yang memasang tema sebelum halaman dirender.
   const STORAGE_KEY = "fajri_portfolio_theme";
 
-  function getInitialTheme() {
+  function getSavedTheme() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === "dark" || saved === "light") {
-        return saved;
-      }
+      return saved === "dark" || saved === "light" ? saved : null;
     } catch (_) {
-      // Ignore storage access errors in private browsing contexts.
+      return null;
     }
+  }
 
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
+  function getSystemTheme() {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
   function applyTheme(theme) {
@@ -27,23 +25,43 @@
     if (toggleBtn) {
       toggleBtn.setAttribute("aria-pressed", String(nextTheme === "dark"));
     }
+  }
 
+  // Disimpan hanya saat pengguna memilih sendiri, agar tema yang mengikuti sistem tidak terkunci.
+  function saveTheme(theme) {
     try {
-      localStorage.setItem(STORAGE_KEY, nextTheme);
+      localStorage.setItem(STORAGE_KEY, theme);
     } catch (_) {
-      // Ignore storage write errors.
+      // Abaikan jika storage diblokir (mode privat).
     }
   }
 
   function initTheme() {
-    applyTheme(getInitialTheme());
+    applyTheme(getSavedTheme() || getSystemTheme());
 
     const toggleBtn = document.getElementById("mode-toggle-btn");
     if (toggleBtn) {
       toggleBtn.addEventListener("click", function () {
         const current = document.documentElement.getAttribute("data-theme");
-        applyTheme(current === "dark" ? "light" : "dark");
+        const next = current === "dark" ? "light" : "dark";
+        applyTheme(next);
+        saveTheme(next);
       });
+    }
+
+    // Ikuti perubahan tema OS selama pengguna belum memilih tema secara manual.
+    if (window.matchMedia) {
+      const query = window.matchMedia("(prefers-color-scheme: dark)");
+      const onSystemChange = function (event) {
+        if (!getSavedTheme()) {
+          applyTheme(event.matches ? "dark" : "light");
+        }
+      };
+      if (typeof query.addEventListener === "function") {
+        query.addEventListener("change", onSystemChange);
+      } else if (typeof query.addListener === "function") {
+        query.addListener(onSystemChange);
+      }
     }
   }
 

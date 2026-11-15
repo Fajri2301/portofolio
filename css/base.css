@@ -79,6 +79,11 @@ a {
   outline-offset: 3px;
 }
 
+/* Section yang menerima fokus lewat skrip (navigasi menu) tidak perlu cincin fokus. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
 .skip-link {
   position: absolute;
   top: -100px;

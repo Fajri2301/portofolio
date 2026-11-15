@@ -119,6 +119,8 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  /* visibility langsung aktif saat dibuka agar tombol Close bisa langsung menerima fokus */
+  transition: opacity 240ms var(--ease-smooth), visibility 0s;
 }
 
 .menu-overlay-top {
@@ -306,7 +308,6 @@
 }
 
 .skill-pill:hover,
-.skill-pill:focus-visible,
 .skill-pill.is-wiggling {
   z-index: 5;
   animation: tag-wiggle 420ms var(--ease-smooth) forwards;
